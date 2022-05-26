@@ -58,3 +58,14 @@ kubectl rollout history deployments/frontend-dp
 kubectl rollout undo deployment/frontend-dp
 kubectl rollout undo deployment/frontend-dp --to-revision=1
 ```
+
+## Rede
+Para se comunicar entre Pods podemos utilizar o endereço IP de cada pod.
+- Para descobrir o endereço IP do pod:
+```shell
+kubectl describe pod postgres-pod
+```
+- Para entrar no pod:
+```shell
+kubectl exec -it webapp-pod -- bash
+```

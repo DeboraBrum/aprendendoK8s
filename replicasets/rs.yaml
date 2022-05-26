@@ -17,4 +17,4 @@ spec:
   selector:
     matchLabels:
       env: production
-  replicas: 2
+  replicas: 3
