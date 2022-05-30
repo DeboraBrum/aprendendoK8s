@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-dp
+  labels:
+    app: backend-app
+    type: backend
+spec:
+  selector:
+    matchLabels:
+      app: backend-app
+  template:
+    metadata:
+      name: backend-pod
+      labels:
+        app: backend-app
+        type: backend
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          # ports:
+          #   - containerPort: <Port>
+  replicas: 3

@@ -10,9 +10,20 @@ spec:
       image: postgres
       env:
         - name: POSTGRES_PASSWORD
-          value: example
+          valueFrom:
+            secretKeyRef:
+              name: db-postgres-secret
+              key: POSTGRES_PASSWORD
         - name: POSTGRES_USER
-          value: example
+          valueFrom:
+            configMapKeyRef:
+              name: remote-postgresql-configmap
+              key: POSTGRES_USER
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: remote-postgresql-configmap
+              key: DATABASE
       resources:
         limits:
           memory: "128Mi"
